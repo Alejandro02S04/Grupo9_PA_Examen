@@ -1,0 +1,76 @@
+﻿@page
+@model LoginModel
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <title>Login - Universidad Técnica de Ambato</title>
+    <style>
+        body {
+            background-color: #fcecea;
+            font-family: Arial;
+        }
+
+        .login-container {
+            background-color: white;
+            width: 400px;
+            margin: 100px auto;
+            padding: 20px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .login-header {
+            background-color: #972d2e;
+            color: white;
+            text-align: center;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+
+        .login-btn {
+            background-color: #972d2e;
+            color: white;
+            padding: 8px 16px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 10px;
+            text-align: center;
+        }
+
+            .login-btn:hover {
+                background-color: #a33c3d;
+            }
+
+            .login-btn:active {
+                background-color: #852c2d;
+            }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <div class="login-header">
+            <h2>UNIVERSIDAD TÉCNICA DE AMBATO</h2>
+        </div>
+
+        <form method="post">
+            <!-- Botón para Alumno -->
+            <button type="submit" class="login-btn" asp-page-handler="Alumno">Alumno</button>
+
+            <!-- Botón para Docente -->
+            <button type="submit" class="login-btn" asp-page-handler="Docente">Docente</button>
+
+            <!-- Botón para Secretaria -->
+            <button type="submit" class="login-btn" asp-page-handler="Secretaria">Secretaria</button>
+
+            <!-- Botón para Admin -->
+            <button type="submit" class="login-btn" asp-page-handler="Admin">Admin</button>
+        </form>
+    </div>
+</body>
+</html>

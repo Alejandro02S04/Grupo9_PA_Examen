@@ -1,0 +1,101 @@
+﻿@page
+@model Grupo9_PA_Examen.Pages.Secretaria.IndexModel
+@{
+    ViewData["Title"] = "Secretaría";
+}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <title>Panel de Secretaría</title>
+    <style>
+        body {
+            background-color: #fcecea;
+            font-family: Arial;
+        }
+
+        .panel-container {
+            background-color: white;
+            width: 90%;
+            margin: 30px auto;
+            padding: 30px;
+            border: 1px solid #ccc;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+
+        .panel-header {
+            background-color: #972d2e;
+            color: white;
+            text-align: center;
+            padding: 15px;
+            margin-bottom: 30px;
+        }
+
+        .btn-custom {
+            background-color: #972d2e;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            cursor: pointer;
+            width: 100%;
+            margin-bottom: 10px;
+            text-align: center;
+            border-radius: 5px;
+        }
+
+            .btn-custom:hover {
+                background-color: #a33c3d;
+            }
+
+            .btn-custom:active {
+                background-color: #852c2d;
+            }
+
+        h4 {
+            color: #972d2e;
+        }
+
+        .row {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        .col-md-4 {
+            flex: 1;
+            padding: 15px;
+        }
+
+        
+    </style>
+</head>
+<body>
+    <div class="panel-container">
+        <div class="panel-header">
+            <h2>Panel de Secretaría</h2>
+        </div>
+
+        <div class="row">
+            <div class="col-md-4">
+                <h4>Gestión de Estudiantes</h4>
+                <a asp-page="/Secretaria/Estudiantes" class="btn-custom">Registrar / Actualizar Estudiantes</a>
+            </div>
+
+            <div class="col-md-4">
+                <h4>Gestión de Docentes</h4>
+                <a asp-page="/Secretaria/RegistrarDocente" class="btn-custom">Registrar / Actualizar Docentes</a>
+            </div>
+
+            <div class="col-md-4">
+                <h4>Matrícula y Reinscripción</h4>
+                <a asp-page="/Secretaria/Matricula" class="btn-custom">Matricular Estudiantes</a>
+            </div>
+
+            <div class="col-md-4 mt-3">
+                <h4>Registrar Asignaturas</h4>
+                <a asp-page="/Secretaria/RegistrarAsignaturas" class="btn-custom"> Registrar </a>
+            </div>
+        </div>
+    </div>
+</body>
+</html>

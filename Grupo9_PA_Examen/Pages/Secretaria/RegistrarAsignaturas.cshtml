@@ -1,0 +1,50 @@
+﻿@page
+@model Grupo9_PA_Examen.Pages.Secretaria.RegistrarAsignaturasModel
+
+@{
+    ViewData["Title"] = "Registrar Asignatura";
+}
+
+<h2>Registrar Nueva Asignatura</h2>
+
+<form method="post">
+    <div class="mb-3">
+        <label asp-for="Asignatura.Nombre" class="form-label">Nombre de la Asignatura</label>
+        <input asp-for="Asignatura.Nombre" class="form-control" />
+        <span asp-validation-for="Asignatura.Nombre" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Asignatura.Codigo" class="form-label">Código</label>
+        <input asp-for="Asignatura.Codigo" class="form-control" />
+        <span asp-validation-for="Asignatura.Codigo" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Asignatura.Creditos" class="form-label">Créditos</label>
+        <input asp-for="Asignatura.Creditos" class="form-control" type="number" min="1" max="10" />
+        <span asp-validation-for="Asignatura.Creditos" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Asignatura.Nivel" class="form-label">Nivel / Semestre</label>
+        <select asp-for="Asignatura.Nivel" class="form-control">
+            @for (int i = 1; i <= 10; i++)
+            {
+                <option value="@i">Nivel @i</option>
+            }
+        </select>
+        <span asp-validation-for="Asignatura.Nivel" class="text-danger"></span>
+    </div>
+
+    <div class="mb-3">
+        <label asp-for="Asignatura.Carrera" class="form-label">Carrera</label>
+        <input asp-for="Asignatura.Carrera" class="form-control" readonly />
+    </div>
+
+    <button type="submit" class="btn btn-primary">Registrar</button>
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}

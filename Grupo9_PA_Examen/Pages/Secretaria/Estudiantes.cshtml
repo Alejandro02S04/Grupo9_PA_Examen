@@ -1,0 +1,72 @@
+﻿@page "{nivelSeleccionado?}"
+@model Grupo9_PA_Examen.Pages.Secretaria.EstudiantesModel
+
+@{
+    ViewData["Title"] = "Registro de Estudiantes";
+}
+
+<h2>Registro de Estudiantes</h2>
+
+<form method="get">
+    <label for="NivelSeleccionado">Seleccione el Semestre:</label>
+    <select asp-for="NivelSeleccionado" asp-items="Model.NivelesDisponibles" class="form-control" onchange="this.form.submit()">
+    </select>
+</form>
+
+<hr />
+
+<form method="post">
+    <!-- Datos del estudiante como ya los tenías -->
+    <div class="mb-3">
+        <label>Cédula</label>
+        <input asp-for="Estudiante.Cedula" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Nombres</label>
+        <input asp-for="Estudiante.Nombres" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Apellidos</label>
+        <input asp-for="Estudiante.Apellidos" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Fecha de nacimiento</label>
+        <input asp-for="Estudiante.FechaNacimiento" type="date" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Correo</label>
+        <input asp-for="Estudiante.Correo" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Carrera</label>
+        <input asp-for="Estudiante.Carrera" value="Tecnologías de la Información" class="form-control" readonly />
+    </div>
+    <input type="hidden" asp-for="Estudiante.Semestre" value="@Model.NivelSeleccionado" />
+
+    <!-- Materias -->
+    <div class="mb-3">
+        <label>Materias del Nivel @Model.NivelSeleccionado</label>
+        <div>
+            @foreach (var materia in Model.MateriasDelNivel)
+            {
+                <div class="form-check">
+                    <input type="checkbox" class="form-check-input"
+                           name="Estudiante.MateriasSeleccionadas"
+                           value="@materia.Id"
+                           id="materia-@materia.Id" />
+                    <label class="form-check-label" for="materia-@materia.Id">@materia.Nombre</label>
+                </div>
+            }
+        </div>
+    </div>
+
+    <div class="mb-3">
+        <label>Estado</label>
+        <select asp-for="Estudiante.Estado" class="form-control">
+            <option>Activo</option>
+            <option>Inactivo</option>
+        </select>
+    </div>
+
+    <button type="submit" class="btn btn-success">Guardar</button>
+</form>

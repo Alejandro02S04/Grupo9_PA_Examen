@@ -1,0 +1,38 @@
+﻿@page
+@model RegistrarDocenteModel
+@{
+    ViewData["Title"] = "Registrar Docente";
+}
+
+<h2>Registrar Docente</h2>
+
+<form method="post">
+    <div class="mb-3">
+        <label>Cédula</label>
+        <input asp-for="Docente.Cedula" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Nombres</label>
+        <input asp-for="Docente.Nombres" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Apellidos</label>
+        <input asp-for="Docente.Apellidos" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Correo</label>
+        <input asp-for="Docente.Correo" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Especialidad</label>
+        <input asp-for="Docente.Especialidad" class="form-control" />
+    </div>
+    <div class="mb-3">
+        <label>Estado</label>
+        <select asp-for="Docente.Estado" class="form-control">
+            <option>Activo</option>
+            <option>Inactivo</option>
+        </select>
+    </div>
+    <button type="submit" class="btn btn-success">Registrar</button>
+</form>

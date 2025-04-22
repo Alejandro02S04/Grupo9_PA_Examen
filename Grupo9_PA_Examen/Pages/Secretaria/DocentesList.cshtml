@@ -1,0 +1,35 @@
+﻿@page
+@model DocentesListModel
+@{
+    ViewData["Title"] = "Listado de Docentes";
+}
+
+<h2>Listado de Docentes</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Cédula</th>
+            <th>Nombre</th>
+            <th>Correo</th>
+            <th>Especialidad</th>
+            <th>Estado</th>
+            <th>Acciones</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var docente in Model.Docentes)
+        {
+            <tr>
+                <td>@docente.Cedula</td>
+                <td>@docente.Nombres @docente.Apellidos</td>
+                <td>@docente.Correo</td>
+                <td>@docente.Especialidad</td>
+                <td>@docente.Estado</td>
+                <td>
+                    <a asp-page="./EditarDocente" asp-route-id="@docente.Id" class="btn btn-sm btn-primary">Editar</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

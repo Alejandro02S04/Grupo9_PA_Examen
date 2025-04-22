@@ -1,0 +1,67 @@
+﻿@page
+@model Grupo9_PA_Examen.Pages.Docente.CalificacionesModel
+@{
+    ViewData["Title"] = "Registrar Calificaciones";
+}
+
+<h2>Registrar Calificaciones</h2>
+
+<form method="post">
+    <div class="form-group">
+        <label for="NivelSeleccionado">Seleccione el Nivel / Semestre:</label>
+        <select asp-for="NivelSeleccionado" class="form-control" asp-items="Model.Niveles" onchange="this.form.submit()">
+        </select>
+    </div>
+
+    @if (Model.Asignaturas != null && Model.Asignaturas.Any())
+    {
+        <div class="form-group mt-3">
+            <label for="AsignaturaId">Seleccione la Asignatura:</label>
+            <select asp-for="AsignaturaId" class="form-control" onchange="this.form.submit()">
+                @foreach (var asignatura in Model.Asignaturas)
+                {
+                    if (asignatura.Value == Model.AsignaturaId.ToString())
+                    {
+                        <option value="@asignatura.Value" selected>@asignatura.Text</option>
+                    }
+                    else
+                    {
+                        <option value="@asignatura.Value">@asignatura.Text</option>
+                    }
+                }
+            </select>
+        </div>
+    }
+
+    @if (Model.Estudiantes != null && Model.Estudiantes.Any())
+    {
+        <div class="form-group mt-3">
+            <label for="EstudianteId">Seleccione el Estudiante:</label>
+            <select asp-for="EstudianteId" class="form-control">
+                @foreach (var estudiante in Model.Estudiantes)
+                {
+                    if (estudiante.Value == Model.EstudianteId.ToString())
+                    {
+                        <option value="@estudiante.Value" selected>@estudiante.Text</option>
+                    }
+                    else
+                    {
+                        <option value="@estudiante.Value">@estudiante.Text</option>
+                    }
+                }
+            </select>
+        </div>
+
+        <div class="form-group mt-3">
+            <label for="Nota">Ingrese la Calificación:</label>
+            <input asp-for="Nota" class="form-control" type="number" step="0.01" min="0" max="10" />
+            <span asp-validation-for="Nota" class="text-danger"></span>
+        </div>
+
+        <button type="submit" class="btn btn-success mt-3">Guardar Calificación</button>
+    }
+</form>
+
+@section Scripts {
+    <partial name="_ValidationScriptsPartial" />
+}
